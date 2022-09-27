@@ -168,11 +168,25 @@ export class Button extends ControlElement {
     this.switchEmptyAttribute();
   }
 
+  private newMethod (): number {
+    this.newMethod2();
+    const a = 1;
+    const b = 2;
+    return a + b;
+  }
+
+  private newMethod2 (): number {
+    const a = 1;
+    const b = 2;
+    return a + b;
+  }
+
   /**
    * Set or remove attribute "empty" based on slot present
    * @returns {void}
    */
   private switchEmptyAttribute (): void {
+    this.newMethod();
     if (this.empty) {
       this.setAttribute('empty', '');
     }
