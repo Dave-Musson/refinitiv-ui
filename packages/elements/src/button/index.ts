@@ -176,6 +176,41 @@ export class Button extends ControlElement {
   }
 
   private newMethod2 (): number {
+    this.newMethod3();
+    const a = 1;
+    const b = 2;
+    return a + b;
+  }
+
+  private newMethod3 (): number {
+    this.newMethod4();
+    const a = 1;
+    const b = 2;
+    return a + b;
+  }
+
+  private newMethod4 (): number {
+    this.newMethod5();
+    const a = 1;
+    const b = 2;
+    return a + b;
+  }
+
+  private newMethod5 (): number {
+    this.newMethod6();
+    const a = 1;
+    const b = 2;
+    return a + b;
+  }
+
+  private newMethod6 (): number {
+    this.newMethod7();
+    const a = 1;
+    const b = 2;
+    return a + b;
+  }
+
+  private newMethod7 (): number {
     const a = 1;
     const b = 2;
     return a + b;
