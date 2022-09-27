@@ -33,41 +33,8 @@ jobs:
         if: steps.setup.outputs.cache-build-hit != 'true'
         run: npm run build:affected -- --base=$BASE_SHA
 
-  lint:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - name: Check out repository code
-        uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
-
-      - name: Setup resources and environment
-        uses: ./.github/actions/setup
-
-      - name: Lint
-        run: npm run lint:affected -- --base=$BASE_SHA
-
-  test:
-    needs: lint
-    runs-on: ubuntu-latest
-    steps:
-      - name: Check out repository code
-        uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
-
-      - name: Test
-        uses: ./.github/actions/run-test
-        with:
-          browsers: 'default'
-          base: $BASE_SHA
-          browserstack: $USE_BROWSERSTACK
-          username: $BROWSERSTACK_USERNAME
-          access-key: $BROWSERSTACK_ACCESS_KEY
-
   sonarcloud:
-    needs: test
+    needs: build
     name: TestCoverage
     runs-on: ubuntu-latest
     steps:
