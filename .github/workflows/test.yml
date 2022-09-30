@@ -1,7 +1,7 @@
 name: Test
-on: [pull_request] # Triggers on any branch
+on: [push] # Triggers on any branch
 env:
-  BASE_SHA: ${{ github.event.pull_request.base.sha }}
+  BASE_SHA: "e6653d7ad695a4cb0d0311bae01fe7cae76a87ec"
   USE_BROWSERSTACK: ${{ secrets.USE_BROWSERSTACK }}
   BROWSERSTACK_USERNAME: ${{ secrets.BROWSERSTACK_USERNAME }}
   BROWSERSTACK_ACCESS_KEY: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
@@ -65,16 +65,6 @@ jobs:
           browserstack: $USE_BROWSERSTACK
           username: $BROWSERSTACK_USERNAME
           access-key: $BROWSERSTACK_ACCESS_KEY
-
-  sonarcloud:
-    needs: test
-    name: TestCoverage
-    runs-on: ubuntu-latest
-    steps:
-      - name: Check out repository code
-        uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
 
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
