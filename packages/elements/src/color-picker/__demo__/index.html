@@ -42,7 +42,8 @@
         <p> Output: </p>
         <textarea readonly id="defaultColorOutput"></textarea>
       </div>
-      <script>
+      <script type="module">
+         import { AccessibilityColor } from '@refinitiv-ui/utils/color.js';
         // Default Color Picker
         const defaultColorPicker = document.getElementById('defaultColorPicker');
         const hexInputDefault = document.getElementById('hexInputDefault');
@@ -53,6 +54,7 @@
         defaultColorPicker.addEventListener('value-changed', event => {
           const value = event.detail.value;
           hexInputDefault.value = value;
+          console.log(new AccessibilityColor(value).toLocalized());
           defaultColorOutput.value += 'Value Change : ' + value + '\n';
         });
       </script>
